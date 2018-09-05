@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="${package}.${moduleName}.dao.${className}Dao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="${package}.${moduleName}.client.domain.${className}DO" id="${classname}Map">
+        #foreach($column in $columns)
+            <result property="${column.attrname}" column="${column.columnName}"/>
+        #end
+    </resultMap>
+
+    <sql id="base_column_list">
+        #foreach($column in $columns)
+        ${column.columnName}
+        #if($velocityCount != $columns.size()),#end
+    #end
+    </sql>
+
+    <sql id="base_where">
+        <trim prefix="where" prefixOverrides="and|or">
+            #foreach($column in $columns)
+                <if test="${column.attrname} != null">AND ${column.columnName} = #{${column.attrname}}</if>
+            #end
+        </trim>
+    </sql>
+
+
+    <select id="queryObject" resultMap="${classname}Map">
+        select
+        <include refid="base_column_list"/>
+        from ${tableName} where ${pk.columnName} = #{value}
+    </select>
+
+    <select id="queryList" resultMap="${classname}Map"
+            parameterType="${package}.${moduleName}.client.query.${className}QueryDO">
+        select
+        <include refid="base_column_list"/>
+        from ${tableName}
+        <include refid="base_where"/>
+        <if test="firstRow != null">
+            limit #{firstRow},#{pageSize}
+        </if>
+    </select>
+
+    <select id="queryCount" resultType="int" parameterType="${package}.${moduleName}.client.query.${className}QueryDO">
+        select count(*) from ${tableName}
+        <include refid="base_where"/>
+    </select>
+
+    <insert id="save" parameterType="${package}.${moduleName}.client.domain.${className}DO"#if($pk.extra ==
+        'auto_increment')
+            useGeneratedKeys="true" keyProperty="$pk.attrname"#end>
+        insert into ${tableName}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            #foreach($column in $columns)
+                #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
+                    <if test="${column.attrname} != null">$column.columnName,</if>
+
+                #end
+            #end
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #foreach($column in $columns)
+                #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
+                    <if test="$column.attrname != null">#{$column.attrname},</if>
+                #end
+            #end
+        </trim>
+    </insert>
+    <insert id="batchSave" parameterType="${package}.${moduleName}.client.domain.${className}DO"#if($pk.extra ==
+        'auto_increment')
+            useGeneratedKeys="true" keyProperty="$pk.attrname"#end>
+        insert into ${tableName}
+        (
+        #foreach($column in $columns)
+            #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
+                ${column.columnName},
+            #end
+        #end
+        )
+        values
+        <foreach collection="list" index="index" separator="," item="item">
+            (
+            #foreach($column in $columns)
+                #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
+                    #{item.$column.attrname},
+                #end
+            #end
+            )
+        </foreach>
+    </insert>
+    <update id="update" parameterType="${package}.${moduleName}.client.domain.${className}DO">
+        update ${tableName}
+        <set>
+            #foreach($column in $columns)
+                #if($column.columnName != $pk.columnName)
+                    <if test="$column.attrname != null">
+                        `$column.columnName` = #{$column.attrname},
+                    </if>
+                #end
+            #end
+        </set>
+        where ${pk.columnName} = #{${pk.attrname}}
+    </update>
+
+    <delete id="remove">
+		delete from ${tableName} where ${pk.columnName} = #{${pk.columnName}}
+	</delete>
+
+</mapper>

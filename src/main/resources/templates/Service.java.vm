@@ -1,0 +1,16 @@
+package ${package}.${moduleName}.service;
+
+import ${package}.${moduleName}.client.domain.${className}DO;
+import ${package}.${moduleName}.client.query.${className}QueryDO;
+import ${package}.service.base.BaseServiceAO;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+public interface ${className}Service extends BaseServiceAO<${className}DO,${className}QueryDO> {
+
+}

@@ -1,0 +1,28 @@
+# Tomcat
+server:
+    tomcat:
+        max-threads: 10
+        min-spare-threads: 10
+    port: 8081
+
+# mysql
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.7.252/xiaowei?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: xiaowei
+#        url: jdbc:mysql://127.0.0.1/xiaowei?useUnicode=true&characterEncoding=UTF-8
+#        username: root
+#        password: MhxzKhl
+    jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd HH:mm:ss
+    resources:
+            static-locations: classpath:/static/,classpath:/views/
+
+# Mybatis配置
+mybatis:
+    mapperLocations: classpath:mapper/**/*.xml
+

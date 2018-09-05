@@ -1,0 +1,25 @@
+# Eclipse
+.classpath
+.project
+.settings/
+  
+# Intellij
+.idea/
+*.iml
+*.iws
+out/
+    
+# Mac
+.DS_Store
+.localized
+	  
+# Maven
+target/
+
+# other
+logs/
+.svn/
+*.imp
+*.crc
+
+vgate-core/${vgate.log.dir}/

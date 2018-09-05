@@ -1,0 +1,28 @@
+package ${package}.${moduleName}.service.impl;
+
+import ${package}.${moduleName}.client.domain.${className}DO;
+import ${package}.${moduleName}.client.query.${className}QueryDO;
+import ${package}.${moduleName}.dao.${className}Dao;
+import ${package}.${moduleName}.service.${className}Service;
+import ${package}.service.base.BaseDAO;
+import ${package}.service.base.BaseServiceAOImpl;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+
+@Service
+@Slf4j
+public class ${className}ServiceImpl extends BaseServiceAOImpl<${className}DO, ${className}QueryDO> implements ${className}Service {
+
+    @Resource
+    private ${className}Dao baseDao;
+
+
+    @Override
+    public BaseDAO<${className}DO, ${className}QueryDO> getDAO() {
+        return baseDao;
+    }
+
+
+}

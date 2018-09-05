@@ -1,0 +1,18 @@
+package ${package}.${moduleName}.dao;
+
+import ${package}.${moduleName}.client.domain.${className}DO;
+import ${package}.${moduleName}.client.query.${className}QueryDO;
+import ${package}.service.base.BaseDAO;
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Mapper
+public interface ${className}Dao extends BaseDAO<${className}DO, ${className}QueryDO> {
+
+}

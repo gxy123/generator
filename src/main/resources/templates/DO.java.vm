@@ -1,0 +1,29 @@
+package ${package}.${moduleName}.client.domain;
+
+import ${package}.client.base.BaseDO;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import java.util.Date;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Data
+@ApiModel
+public class ${className}DO extends BaseDO {
+
+    private static final long serialVersionUID = 1L;
+
+    #foreach ($column in $columns)
+    #if($column.comments)
+    @ApiModelProperty("$column.comments")
+    #end
+    private $column.attrType $column.attrname;
+    #end
+}
