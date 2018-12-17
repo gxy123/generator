@@ -51,7 +51,7 @@ public class ${className}Controller extends BaseControllerImpl<${className}DO, $
     public CommonResult<List<${className}DO>> select(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("pojo") ${className}QueryDO q) {
         CommonResult<List<${className}DO>> query = getService().query(q);
         CommonResult<Integer> count = getService().count(q);
-        query.setTotal(count.getResult();
+        query.setTotal(count.getResult());
         return query;
     }
 

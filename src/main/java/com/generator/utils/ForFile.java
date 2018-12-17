@@ -1,13 +1,6 @@
 package com.generator.utils;
 
-import java.io.IOException;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.UUID;
 
 /**
@@ -22,16 +15,14 @@ public class ForFile {
     /**
      * 创建文件
      *
-     * @param fileName
-     *         文件名称
-     * @param filecontent
-     *         文件内容
-     *
+     * @param fileName    文件名称
+     * @param filecontent 文件内容
      * @return 是否创建成功，成功则返回true
      */
     public static boolean createFile(String path, String fileName, String filecontent) {
         Boolean bool = false;
-        filenameTemp = path + fileName;//文件路径+名称+文件类型
+        //文件路径+名称+文件类型
+        filenameTemp = path + fileName;
         File file = new File(filenameTemp);
         try {
             //如果文件不存在，则创建新的文件
@@ -53,18 +44,15 @@ public class ForFile {
     /**
      * 向文件中写入内容
      *
-     * @param filepath
-     *         文件路径与名称
-     * @param newstr
-     *         写入的内容
-     *
+     * @param filepath 文件路径与名称
+     * @param newstr   写入的内容
      * @return
-     *
      * @throws IOException
      */
     public static boolean writeFileContent(String filepath, String newstr) throws IOException {
         Boolean bool = false;
-        String filein = newstr + "\r\n";//新写入的行，换行
+        //新写入的行，换行
+        String filein = newstr + "\r\n";
         String temp = "";
 
         FileInputStream fis = null;
@@ -120,9 +108,7 @@ public class ForFile {
     /**
      * 删除文件
      *
-     * @param fileName
-     *         文件名称
-     *
+     * @param fileName 文件名称
      * @return
      */
     public static boolean delFile(String path, String fileName) {

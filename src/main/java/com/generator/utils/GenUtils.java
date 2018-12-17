@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -27,7 +28,20 @@ import java.util.zip.ZipOutputStream;
  */
 public class GenUtils {
 
-    public static List<String> getTemplates() {
+    private static Map<String, String> getAttachTemplates() {
+        Map<String, String> templates = new HashMap<>(7);
+
+        templates.put("templates/attach/application-dev.yml.vm", "application-dev.yml");
+        templates.put("templates/attach/application-prod.yml.vm", "application-prod.yml");
+        templates.put("templates/attach/application-test.yml.vm", "application-test.yml");
+        templates.put("templates/attach/BootApplication.java.vm", "BootApplication.java");
+        templates.put("templates/attach/client.pom.xml.vm", "pom.xml");
+        templates.put("templates/attach/master.pom.xml.vm", "pom.xml");
+        templates.put("templates/attach/service.pom.xml.vm", "pom.xml");
+        return templates;
+    }
+
+    private static List<String> getTemplates() {
         List<String> templates = new ArrayList<String>();
         templates.add("templates/DO.java.vm");
         templates.add("templates/Query.java.vm");
@@ -38,6 +52,70 @@ public class GenUtils {
         templates.add("templates/Controller.java.vm");
         templates.add("templates/Api.java.vm");
         return templates;
+    }
+
+    /**
+     * 生成代码
+     */
+    public static void generatorAttachCode(ZipOutputStream zip) {
+        //配置信息
+        Configuration config = getConfig();
+        boolean hasBigDecimal = false;
+
+
+        //设置velocity资源加载器
+        Properties prop = new Properties();
+        prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+        Velocity.init(prop);
+        String projectPath = config.getString("projectPath");
+        String mainPath = config.getString("mainPath");
+        mainPath = StringUtils.isBlank(mainPath) ? "com.generator" : mainPath;
+        String moduleName = config.getString("moduleName");
+        //封装模板数据
+        Map<String, Object> map = new HashMap<>();
+        map.put("hasBigDecimal", hasBigDecimal);
+        map.put("mainPath", mainPath);
+        map.put("package", config.getString("package"));
+        map.put("moduleName", moduleName);
+        map.put("author", config.getString("author"));
+        map.put("email", config.getString("email"));
+        map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
+        VelocityContext context = new VelocityContext(map);
+
+        //获取模板列表
+        Map<String, String> attachTemplates = getAttachTemplates();
+        attachTemplates.forEach(new BiConsumer<String, String>() {
+            @Override
+            public void accept(String template, String name) {
+                //渲染模板
+                StringWriter sw = new StringWriter();
+                Template tpl = Velocity.getTemplate(template, "UTF-8");
+                tpl.merge(context, sw);
+                try {
+                    //添加到zip
+                    String absFileName = getFileName(template, name, config
+                            .getString("package"), config.getString("moduleName"));
+                    System.out.println(absFileName);
+                    String fileName = Arrays.asList(absFileName.split("/")).stream().filter(p -> p.endsWith(".java"))
+                            .collect(Collectors.joining());
+                    String absDir = absFileName.substring(0, absFileName.indexOf(fileName));
+                    System.out.printf("fileName: %s, dir: %s", fileName, absDir);
+                    boolean createFileRes = ForFile.createFile(projectPath + moduleName + "/" + absDir, fileName, sw
+                            .toString());
+                    if (createFileRes) {
+                        System.out.printf("success create %s\n", absFileName);
+                    } else {
+                        System.out.printf("fail create %s\n", absFileName);
+                    }
+                    zip.putNextEntry(new ZipEntry(absFileName));
+                    IOUtils.write(sw.toString(), zip, "UTF-8");
+                    IOUtils.closeQuietly(sw);
+                    zip.closeEntry();
+                } catch (IOException e) {
+                    throw new RRException("渲染模板失败，文件名：" + name, e);
+                }
+            }
+        });
     }
 
     /**
@@ -127,10 +205,9 @@ public class GenUtils {
             StringWriter sw = new StringWriter();
             Template tpl = Velocity.getTemplate(template, "UTF-8");
             tpl.merge(context, sw);
-
             try {
                 //添加到zip
-                String absFileName = getFileName(projectPath, template, tableEntity.getClassName(), config
+                String absFileName = getFileName(template, tableEntity.getClassName(), config
                         .getString("package"), config.getString("moduleName"));
                 System.out.println(absFileName);
 
@@ -140,7 +217,6 @@ public class GenUtils {
                 System.out.printf("fileName: %s, dir: %s", fileName, absDir);
                 boolean createFileRes = ForFile.createFile(projectPath + moduleName + "/" + absDir, fileName, sw
                         .toString());
-//                boolean createFileRes = false;
                 if (createFileRes) {
                     System.out.printf("success create %s\n", absFileName);
                 } else {
@@ -188,7 +264,7 @@ public class GenUtils {
     /**
      * 获取文件名
      */
-    public static String getFileName(String projectPath, String template, String className, String packageName, String
+    public static String getFileName(String template, String className, String packageName, String
             moduleName) {
 
 
@@ -247,6 +323,39 @@ public class GenUtils {
 
         if (template.contains("Api.java.vm")) {
             return apiPackagePath + "api" + File.separator + className + "Api.java";
+        }
+//        templates.put("templates/attach/application-dev.yml.vm", "application-dev.yml");
+//        templates.put("templates/attach/application-prod.yml.vm", "application-prod.yml");
+//        templates.put("templates/attach/application-test.yml.vm", "application-test.yml");
+//        templates.put("templates/attach/BootApplication.java.vm", "BootApplication.java");
+//        templates.put("templates/attach/client.pom.xml.vm", "client.pom.xml");
+//        templates.put("templates/attach/master.pom.xml.vm", "master.pom.xml");
+//        templates.put("templates/attach/service.pom.xml.vm", "service.pom.xml");
+        if (template.contains("application-dev.yml.vm")) {
+            return moduleName + "-service" + File
+                    .separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + className;
+        }
+        if (template.contains("application-prod.yml.vm")) {
+            return moduleName + "-service" + File
+                    .separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + className;
+        }
+        if (template.contains("application-test.yml.vm")) {
+            return moduleName + "-service" + File
+                    .separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + className;
+        }
+        if (template.contains("BootApplication.java.vm")) {
+            return corePackagePath + className;
+        }
+        if (template.contains("client.pom.xml.vm")) {
+            return moduleName + "-client" + File
+                    .separator + className;
+        }
+        if (template.contains("service.pom.xml.vm")) {
+            return moduleName + "-service" + File
+                    .separator + className;
+        }
+        if (template.contains("master.pom.xml.vm")) {
+            return className;
         }
 
         System.out.println("不存在的模板");
