@@ -86,9 +86,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
     </dependencies>
     <build>
-        <finalName>xiaowei-activity</finalName>
+        <finalName>${moduleName}-server-bin</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

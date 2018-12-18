@@ -38,7 +38,7 @@ public class DefaultHttpRequestAspect {
     public static final Integer ANT_LIMIT = 1500;
 
     @Resource
-    private StringRedisTemplate redisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
     private DistribID distribID = new DistribID();
 
@@ -47,9 +47,9 @@ public class DefaultHttpRequestAspect {
     }
 
     private Long increment(String key, Long expire) {
-        long count = redisTemplate.opsForValue().increment(key, 1);
+        long count = stringRedisTemplate.opsForValue().increment(key, 1);
         if (count == 1) {
-            redisTemplate.expire(key, expire, TimeUnit.SECONDS);
+            stringRedisTemplate.expire(key, expire, TimeUnit.SECONDS);
         }
         return count;
     }
