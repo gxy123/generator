@@ -1,4 +1,4 @@
-package com.wei;
+package com.wei.${moduleName};
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableScheduling
 @EnableTransactionManagement
 @EnableDiscoveryClient
+@ComponentScan("com.wei")
 public class BootApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(BootApplication.class);
