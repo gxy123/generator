@@ -12,8 +12,7 @@
 
     <sql id="base_column_list">
         #foreach($column in $columns)
-        ${column.columnName}
-        #if($velocityCount != $columns.size()),#end
+        ${column.columnName}#if($velocityCount != $columns.size()),#end
     #end
     </sql>
 
@@ -56,7 +55,6 @@
             #foreach($column in $columns)
                 #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
                     <if test="${column.attrname} != null">$column.columnName,</if>
-
                 #end
             #end
         </trim>
