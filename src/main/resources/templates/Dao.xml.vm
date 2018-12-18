@@ -13,7 +13,8 @@
     <sql id="base_column_list">
         #foreach($column in $columns)
         ${column.columnName}#if($velocityCount != $columns.size()),#end
-    #end
+        #end
+
     </sql>
 
     <sql id="base_where">
