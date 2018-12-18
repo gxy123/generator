@@ -35,6 +35,10 @@ public class GenUtils {
         templates.put("templates/attach/application-prod.yml.vm", "application-prod.yml");
         templates.put("templates/attach/application-test.yml.vm", "application-test.yml");
         templates.put("templates/attach/BootApplication.java.vm", "BootApplication.java");
+        templates.put("templates/attach/DefaultHttpRequestAspect.java.vm", "DefaultHttpRequestAspect.java");
+        templates.put("templates/attach/FilterConfiguration.java.vm", "FilterConfiguration.java");
+        templates.put("templates/attach/ServerProperties.java.vm", "ServerProperties.java");
+        templates.put("templates/attach/SwaggerConfiguration.java.vm", "SwaggerConfiguration.java");
         templates.put("templates/attach/client.pom.xml.vm", "pom.xml");
         templates.put("templates/attach/master.pom.xml.vm", "pom.xml");
         templates.put("templates/attach/service.pom.xml.vm", "pom.xml");
@@ -324,13 +328,6 @@ public class GenUtils {
         if (template.contains("Api.java.vm")) {
             return apiPackagePath + "api" + File.separator + className + "Api.java";
         }
-//        templates.put("templates/attach/application-dev.yml.vm", "application-dev.yml");
-//        templates.put("templates/attach/application-prod.yml.vm", "application-prod.yml");
-//        templates.put("templates/attach/application-test.yml.vm", "application-test.yml");
-//        templates.put("templates/attach/BootApplication.java.vm", "BootApplication.java");
-//        templates.put("templates/attach/client.pom.xml.vm", "client.pom.xml");
-//        templates.put("templates/attach/master.pom.xml.vm", "master.pom.xml");
-//        templates.put("templates/attach/service.pom.xml.vm", "service.pom.xml");
         if (template.contains("application-dev.yml.vm")) {
             return moduleName + "-service" + File
                     .separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + className;
@@ -357,7 +354,18 @@ public class GenUtils {
         if (template.contains("master.pom.xml.vm")) {
             return className;
         }
-
+        if (template.contains("DefaultHttpRequestAspect.java.vm")) {
+            return corePackagePath + "filter" + File.separator + className;
+        }
+        if (template.contains("FilterConfiguration.java.vm")) {
+            return corePackagePath + "configer" + File.separator + className;
+        }
+        if (template.contains("ServerProperties.java.vm")) {
+            return corePackagePath + "configer" + File.separator + className;
+        }
+        if (template.contains("SwaggerConfiguration.java.vm")) {
+            return corePackagePath + "configer" + File.separator + className;
+        }
         System.out.println("不存在的模板");
         return null;
     }

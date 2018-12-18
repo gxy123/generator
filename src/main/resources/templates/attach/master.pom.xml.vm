@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wei.${moduleName}</groupId>
-    <artifactId>${moduleName}-parent</artifactId>
+    <artifactId>${moduleName}-server</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
