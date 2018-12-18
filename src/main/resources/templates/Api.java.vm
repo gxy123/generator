@@ -42,13 +42,11 @@ public class ${className}Api extends BaseControllerImpl<${className}DO, ${classN
     /**
      * 通用查询逻辑
      *
-     * @param request
-     * @param response
      * @param q        查询对象
      * @return
      */
     @RequestMapping("query")
-    public CommonResult<List<${className}DO>> select(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("pojo") ${className}QueryDO q) {
+    public CommonResult<List<${className}DO>> select(@ModelAttribute("pojo") ${className}QueryDO q) {
         CommonResult<List<${className}DO>> query = getService().query(q);
         CommonResult<Integer> count = getService().count(q);
         query.setTotal(count.getResult());
@@ -58,51 +56,43 @@ public class ${className}Api extends BaseControllerImpl<${className}DO, ${classN
     /**
      * 获取详情
      *
-     * @param request
-     * @param response
      * @return
      */
     @RequestMapping("get")
-    public CommonResult<${className}DO> detail(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Long id) {
+    public CommonResult<${className}DO> detail(@RequestParam("id") Long id) {
         return getService().get(id);
     }
 
     /**
      * 通用更新逻辑
      *
-     * @param request
-     * @param response
      * @param t
      * @return
      */
     @RequestMapping("update")
-    public CommonResult<Long> update(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("pojo") ${className}DO t) {
+    public CommonResult<Long> update(@ModelAttribute("pojo") ${className}DO t) {
         return getService().modify(t);
     }
 
     /**
      * 通用删除逻辑
      *
-     * @param request
-     * @param response
      * @param id
      * @return
      */
     @RequestMapping("delete")
-    public CommonResult<Long> delete(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Long id) {
+    public CommonResult<Long> delete(@RequestParam("id") Long id) {
         return getService().remove(id);
     }
 
     /**
      * 通用插入逻辑
      *
-     * @param request
-     * @param response
      * @param t
      * @return
      */
     @RequestMapping("add")
-    public CommonResult<${className}DO> insert(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("pojo") ${className}DO t) {
+    public CommonResult<${className}DO> insert(@ModelAttribute("pojo") ${className}DO t) {
         return getService().save(t);
     }
 }
