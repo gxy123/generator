@@ -12,7 +12,7 @@ eureka:
     prefer-ip-address: true
 spring:
   application:
-    name: xiaowei-api
+    name: ${moduleName}-api
   datasource: #以下数据库部分自行修改
       type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: com.mysql.jdbc.Driver
