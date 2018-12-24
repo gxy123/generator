@@ -42,6 +42,7 @@ public class GenUtils {
         templates.put("templates/attach/client.pom.xml.vm", "pom.xml");
         templates.put("templates/attach/master.pom.xml.vm", "pom.xml");
         templates.put("templates/attach/service.pom.xml.vm", "pom.xml");
+        templates.put("templates/attach/logback.xml.vm", "logback.xml");
         return templates;
     }
 
@@ -337,6 +338,10 @@ public class GenUtils {
                     .separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + className;
         }
         if (template.contains("application-test.yml.vm")) {
+            return moduleName + "-service" + File
+                    .separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + className;
+        }
+        if (template.contains("logback.xml.vm")) {
             return moduleName + "-service" + File
                     .separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + className;
         }

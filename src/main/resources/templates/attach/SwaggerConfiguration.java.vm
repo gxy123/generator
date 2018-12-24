@@ -1,6 +1,4 @@
-package com.wei.${moduleName}.configer;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+package com.wei.${moduleName}import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.google.common.collect.Lists;
@@ -28,6 +26,8 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+.configer;
+
 /**
  * @version 1.0
  * @author: wangqiaobin
@@ -42,19 +42,13 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
 
     @Bean
     public Docket createRestApi() {
-        ParameterBuilder ticketPar = new ParameterBuilder();
-        List<Parameter> pars = Lists.newArrayList();
-        ticketPar.name("City").description("城市")
-                .modelRef(new ModelRef("string")).parameterType("header").defaultValue("1")
-                .required(false).build();
-        pars.add(ticketPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .enable(environmentDefine.isTest() || environmentDefine.isDev())
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.wei.activity.web"))
+                .apis(RequestHandlerSelectors.basePackage("com.wei.${moduleName}.web"))
                 .paths(PathSelectors.any())
-                .build().globalOperationParameters(pars);
+                .build();
     }
 
     private ApiInfo apiInfo() {
