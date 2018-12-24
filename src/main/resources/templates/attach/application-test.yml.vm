@@ -13,12 +13,12 @@ eureka:
 spring:
   application:
     name: xiaowei-api
-  datasource:
+  datasource: #以下数据库部分自行修改
       type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: com.mysql.jdbc.Driver
-      url: jdbc:mysql://192.168.7.252/website_activity?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-      username: root
-      password: xiaowei
+      url: jdbc:mysql://host:port/dbname?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      username: username
+      password: password
       dbcp2:
          max-idle: 10
          max-wait-millis: 10000
@@ -30,8 +30,8 @@ spring:
          time-between-eviction-runs-millis: 18800
   transaction:
       rollback-on-commit-failure: true
-  redis:
-       host: 192.168.7.251
+  redis: #以下redis部分自行修改
+       host: host
        port: 6379
 #       password: dh35hebsd87ed9df9d0kemd9
        lettuce:
