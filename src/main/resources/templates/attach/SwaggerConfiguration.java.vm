@@ -1,4 +1,6 @@
-package com.wei.${moduleName}import com.fasterxml.jackson.databind.ObjectMapper;
+package com.wei.${moduleName}.configer;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.google.common.collect.Lists;
@@ -26,7 +28,7 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-.configer;
+
 
 /**
  * @version 1.0
