@@ -75,7 +75,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("*")
                 .allowedMethods("PUT", "DELETE", "GET", "POST")
-                .allowedHeaders("Origin", "X-Requested-With", "Content-Type", "Accept", "Accept-Encoding", "City")
+                .allowedHeaders("Origin", "X-Requested-With", "Content-Type", "Accept", "Accept-Encoding")
                 .allowCredentials(true).maxAge(3600);
     }
 
