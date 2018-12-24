@@ -74,7 +74,7 @@
         (
         #foreach($column in $columns)
             #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
-                ${column.columnName},
+                ${column.columnName} #if($foreach.hasNext),#end
             #end
         #end
         )
@@ -83,7 +83,7 @@
             (
             #foreach($column in $columns)
                 #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
-                    #{item.$column.attrname},
+                    #{item.$column.attrname}#if($foreach.hasNext),#end
                 #end
             #end
             )
