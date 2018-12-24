@@ -27,6 +27,7 @@ import   ${package}.${moduleName}.client.query.${className}QueryDO;
  * @email ${email}
  * @date ${datetime}
  */
+@Api(description = "${comments}-相关接口")
 @Slf4j
 @RestController
 @RequestMapping("/api/${pathName}")
@@ -45,6 +46,7 @@ public class ${className}Api extends BaseControllerImpl<${className}DO, ${classN
      * @param q        查询对象
      * @return
      */
+    @ApiOperation(value = "通用查询逻辑", httpMethod = "GET", notes = "通用查询逻辑")
     @RequestMapping("query")
     public CommonResult<List<${className}DO>> select(@ModelAttribute("pojo") ${className}QueryDO q) {
         CommonResult<List<${className}DO>> query = getService().query(q);
@@ -58,6 +60,7 @@ public class ${className}Api extends BaseControllerImpl<${className}DO, ${classN
      *
      * @return
      */
+    @ApiOperation(value = "获取详情", httpMethod = "GET", notes = "获取详情")
     @RequestMapping("get")
     public CommonResult<${className}DO> detail(@RequestParam("id") Long id) {
         return getService().get(id);
@@ -69,6 +72,7 @@ public class ${className}Api extends BaseControllerImpl<${className}DO, ${classN
      * @param t
      * @return
      */
+    @ApiOperation(value = "通用更新逻辑", httpMethod = "GET", notes = "通用更新逻辑")
     @RequestMapping("update")
     public CommonResult<Long> update(@ModelAttribute("pojo") ${className}DO t) {
         return getService().modify(t);
@@ -80,6 +84,7 @@ public class ${className}Api extends BaseControllerImpl<${className}DO, ${classN
      * @param id
      * @return
      */
+    @ApiOperation(value = "通用删除逻辑", httpMethod = "GET", notes = "通用删除逻辑")
     @RequestMapping("delete")
     public CommonResult<Long> delete(@RequestParam("id") Long id) {
         return getService().remove(id);
@@ -91,6 +96,7 @@ public class ${className}Api extends BaseControllerImpl<${className}DO, ${classN
      * @param t
      * @return
      */
+    @ApiOperation(value = "通用插入逻辑", httpMethod = "POST", notes = "通用插入逻辑")
     @RequestMapping("add")
     public CommonResult<${className}DO> insert(@ModelAttribute("pojo") ${className}DO t) {
         return getService().save(t);
