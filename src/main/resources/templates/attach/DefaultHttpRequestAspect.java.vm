@@ -42,7 +42,7 @@ public class DefaultHttpRequestAspect {
 
     private DistribID distribID = new DistribID();
 
-    @Pointcut("execution(* com.wei.order.web.api..*.*(..)) @annotation(org.springframework.web.bind.annotation.RequestMapping)")
+    @Pointcut("execution(* com.wei.${moduleName}.web.api..*.*(..)) @annotation(org.springframework.web.bind.annotation.RequestMapping)")
     public void pointcut() {
     }
 
