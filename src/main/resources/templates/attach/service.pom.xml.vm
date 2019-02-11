@@ -16,6 +16,10 @@
             <artifactId>frame-common</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.wei.passport</groupId>
+            <artifactId>passport-client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.wei.${moduleName}</groupId>
             <artifactId>${moduleName}-client</artifactId>
             <version>1.0-SNAPSHOT</version>

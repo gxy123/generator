@@ -8,6 +8,8 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka/
     should-unregister-on-shutdown: true
+    register-with-eureka: false
+    fetch-registry: false
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}

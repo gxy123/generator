@@ -45,7 +45,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
     public Docket innerApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .enable(environmentDefine.isTest() || environmentDefine.isDev())
-                .groupName("INNER-API")
+                .groupName("controller")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.wei.${moduleName}.web.controller"))
@@ -57,20 +57,10 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
     public Docket openApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .enable(environmentDefine.isTest() || environmentDefine.isDev())
-                .groupName("OPEN-API")
+                .groupName("gateway-api")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.wei.${moduleName}.web.api"))
-                .paths(PathSelectors.any())
-                .build();
-    }
-    @Bean
-    public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .enable(environmentDefine.isTest() || environmentDefine.isDev())
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.wei.${moduleName}.web"))
                 .paths(PathSelectors.any())
                 .build();
     }
