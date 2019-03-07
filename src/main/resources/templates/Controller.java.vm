@@ -99,7 +99,7 @@ public class ${className}Controller extends BaseControllerImpl<${className}DO, $
      */
     @ApiOperation(value = "通用插入逻辑", httpMethod = "POST", notes = "通用插入逻辑")
     @RequestMapping("add")
-    public CommonResult<${className}DO> insert(@ModelAttribute("pojo") ${className}DO t) {
+    public CommonResult<${className}DO> insert(@RequestBody ${className}DO t) {
         return getService().save(t);
     }
 }
