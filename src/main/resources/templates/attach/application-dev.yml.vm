@@ -20,9 +20,9 @@ spring:
   datasource: #以下数据库部分自行修改
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://host:port/dbname?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-    username: username
-    password: password
+    url: jdbc:mysql://localhost/oauth_db?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
     dbcp2:
       max-idle: 10
       max-wait-millis: 10000
@@ -47,7 +47,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   servlet:
     multipart:
-      max-file-size: 5Mb
-      max-request-size: 10Mb
+      max-file-size: 5MB
+      max-request-size: 10MB
 mybatis:
   mapperLocations: classpath:mapper/**/*.xml

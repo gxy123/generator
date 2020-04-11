@@ -1,15 +1,11 @@
-package com.wei.${moduleName}.configer;
-
-
-
-
+package com.gxy.${moduleName}.configer;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
  * @version 1.0
- * @author: wangqiaobin
+ * @author:  ${author}
  * @date : 2018/4/25
  */
 @Data

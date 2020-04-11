@@ -1,5 +1,7 @@
 package com.generator.dao;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +12,7 @@ import java.util.Map;
  *
  * @date 2016年12月19日 下午3:32:04
  */
+@Repository
 public interface SysGeneratorDao {
 	
 	List<Map<String, Object>> queryList(Map<String, Object> map);

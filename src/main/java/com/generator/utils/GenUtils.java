@@ -35,7 +35,7 @@ public class GenUtils {
         templates.put("templates/attach/application-prod.yml.vm", "application-prod.yml");
         templates.put("templates/attach/application-test.yml.vm", "application-test.yml");
         templates.put("templates/attach/BootApplication.java.vm", "BootApplication.java");
-        templates.put("templates/attach/DefaultHttpRequestAspect.java.vm", "DefaultHttpRequestAspect.java");
+        //templates.put("templates/attach/DefaultHttpRequestAspect.java.vm", "DefaultHttpRequestAspect.java");
         templates.put("templates/attach/FilterConfiguration.java.vm", "FilterConfiguration.java");
         templates.put("templates/attach/ServerProperties.java.vm", "ServerProperties.java");
         templates.put("templates/attach/SwaggerConfiguration.java.vm", "SwaggerConfiguration.java");

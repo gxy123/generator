@@ -19,8 +19,26 @@ import java.util.zip.ZipOutputStream;
  */
 @Service
 public class SysGeneratorService {
+
+    // 变量field注入
+//    @Autowired
+//    private SysGeneratorDao sysGeneratorDao;
+
+    // setter注入
+//    private SysGeneratorDao sysGeneratorDao;
+//
+//    @Autowired
+//    public void setSysGeneratorDao(SysGeneratorDao sysGeneratorDao) {
+//        this.sysGeneratorDao = sysGeneratorDao;
+//    }
+
+    private final SysGeneratorDao sysGeneratorDao;
+
+    // 构造器constructor注入
     @Autowired
-    private SysGeneratorDao sysGeneratorDao;
+    public SysGeneratorService(SysGeneratorDao sysGeneratorDao) {
+        this.sysGeneratorDao = sysGeneratorDao;
+    }
 
     public List<Map<String, Object>> queryList(Map<String, Object> map) {
         return sysGeneratorDao.queryList(map);

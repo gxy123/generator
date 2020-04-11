@@ -1,11 +1,11 @@
-package com.wei.${moduleName}.configer;
+package com.gxy.${moduleName}.configer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.google.common.collect.Lists;
-import com.wei.common.util.DateUtil;
-import com.wei.service.configure.EnvironmentDefine;
+import com.gxy.service.base.DateUtil;
+import com.gxy.service.base.EnvironmentDefine;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -32,7 +32,7 @@ import java.util.List;
 
 /**
  * @version 1.0
- * @author: wangqiaobin
+ * @author: ${author}
  * @date : 2018/5/30
  */
 @Configuration
@@ -48,7 +48,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
                 .groupName("controller")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.wei.${moduleName}.web.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.${group}.${moduleName}.web.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -60,7 +60,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
                 .groupName("gateway-api")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.wei.${moduleName}.web.api"))
+                .apis(RequestHandlerSelectors.basePackage("com.${group}.${moduleName}.web.api"))
                 .paths(PathSelectors.any())
                 .build();
     }

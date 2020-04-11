@@ -1,4 +1,4 @@
-package com.wei.${moduleName};
+package com.gxy.${moduleName};
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -7,17 +7,16 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 /**
  * @version 1.0
- * @author: wangqiaobin
+ * @author:  ${author}
  * @date : 2018/11/13
  */
 @SpringBootApplication
 @EnableScheduling
 @EnableTransactionManagement
 @EnableDiscoveryClient
-@ComponentScan("com.wei")
+@ComponentScan("com.gxy")
 public class BootApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(BootApplication.class);

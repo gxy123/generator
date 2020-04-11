@@ -4,25 +4,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>${moduleName}-server</artifactId>
-        <groupId>com.wei.${moduleName}</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>com.gxy.${moduleName}</groupId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>${moduleName}-service</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.wei</groupId>
-            <artifactId>frame-common</artifactId>
+            <groupId>com.gxy</groupId>
+            <artifactId>base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.wei.passport</groupId>
-            <artifactId>passport-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.wei.${moduleName}</groupId>
+            <groupId>com.gxy.${moduleName}</groupId>
             <artifactId>${moduleName}-client</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -112,16 +109,12 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
