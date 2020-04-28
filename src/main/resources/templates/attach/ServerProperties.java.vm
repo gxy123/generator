@@ -1,4 +1,4 @@
-package com.gxy.${moduleName}.configer;
+package ${package}.${moduleName}.configer;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

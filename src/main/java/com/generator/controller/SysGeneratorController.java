@@ -2,9 +2,11 @@ package com.generator.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.generator.service.SysGeneratorService;
+import com.generator.utils.GenUtils;
 import com.generator.utils.PageUtils;
 import com.generator.utils.Query;
 import com.generator.utils.R;
+import org.apache.commons.configuration.Configuration;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,7 +59,9 @@ public class SysGeneratorController {
         byte[] data = sysGeneratorService.generatorCode(tableNames);
 
         response.reset();
-        response.setHeader("Content-Disposition", "attachment; filename=\"generator" +
+        Configuration config = GenUtils.getConfig();
+        String name =config.getString("moduleName")+"-server";
+        response.setHeader("Content-Disposition", "attachment; filename=\""+ name+
                 ".zip\"");
         response.addHeader("Content-Length", "" + data.length);
         response.setContentType("application/octet-stream; charset=UTF-8");

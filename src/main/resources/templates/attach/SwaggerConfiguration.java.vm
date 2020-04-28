@@ -1,4 +1,4 @@
-package com.gxy.${moduleName}.configer;
+package ${package}.${moduleName}.configer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -48,7 +48,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
                 .groupName("controller")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.${group}.${moduleName}.web.controller"))
+                .apis(RequestHandlerSelectors.basePackage("${package}.${moduleName}.web.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -60,7 +60,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
                 .groupName("gateway-api")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.${group}.${moduleName}.web.api"))
+                .apis(RequestHandlerSelectors.basePackage("${package}.${moduleName}.web.api"))
                 .paths(PathSelectors.any())
                 .build();
     }

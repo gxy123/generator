@@ -85,6 +85,7 @@ public class GenUtils {
         map.put("author", config.getString("author"));
         map.put("email", config.getString("email"));
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
+        map.put("group",config.getString("group"));
         VelocityContext context = new VelocityContext(map);
 
         //获取模板列表
@@ -216,7 +217,7 @@ public class GenUtils {
                         .getString("package"), config.getString("moduleName"));
                 System.out.println(absFileName);
 
-                String fileName = Arrays.asList(absFileName.split("/")).stream().filter(p -> p.endsWith(".java"))
+                String fileName = Arrays.asList(absFileName.split("\\\\")).stream().filter(p -> p.endsWith(".java"))
                         .collect(Collectors.joining());
                 String absDir = absFileName.substring(0, absFileName.indexOf(fileName));
                 System.out.printf("fileName: %s, dir: %s", fileName, absDir);
