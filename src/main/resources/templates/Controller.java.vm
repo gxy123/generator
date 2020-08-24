@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 
-import   ${package}.client.base.CommonResult;
+import   ${package}.${moduleName}.client.base.CommonResult;
 import   ${package}.${moduleName}.service.${className}Service;
-import   ${package}.service.base.BaseControllerImpl;
-import   ${package}.service.base.BaseServiceAO;
+import   ${package}.${moduleName}.service.base.BaseControllerImpl;
+import   ${package}.${moduleName}.service.base.BaseServiceAO;
 import   ${package}.${moduleName}.client.domain.${className}DO;
 import   ${package}.${moduleName}.client.query.${className}QueryDO;
 

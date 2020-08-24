@@ -4,8 +4,8 @@ import ${package}.${moduleName}.client.domain.${className}DO;
 import ${package}.${moduleName}.client.query.${className}QueryDO;
 import ${package}.${moduleName}.dao.${className}Dao;
 import ${package}.${moduleName}.service.${className}Service;
-import ${package}.service.base.BaseDAO;
-import ${package}.service.base.BaseServiceAOImpl;
+import ${package}.${moduleName}.service.base.BaseDAO;
+import ${package}.${moduleName}.service.base.BaseServiceAOImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

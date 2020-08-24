@@ -1,6 +1,6 @@
 package ${package}.${moduleName}.client.domain;
 
-import ${package}.client.base.BaseDO;
+import ${package}.${moduleName}.client.base.BaseDO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

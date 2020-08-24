@@ -2,7 +2,7 @@ package ${package}.${moduleName}.dao;
 
 import ${package}.${moduleName}.client.domain.${className}DO;
 import ${package}.${moduleName}.client.query.${className}QueryDO;
-import ${package}.service.base.BaseDAO;
+import ${package}.${moduleName}.service.base.BaseDAO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

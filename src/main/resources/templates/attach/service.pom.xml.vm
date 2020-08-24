@@ -12,11 +12,6 @@
     <artifactId>${moduleName}-service</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.gxy</groupId>
-            <artifactId>base</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>${package}.${moduleName}</groupId>
             <artifactId>${moduleName}-client</artifactId>
             <version>0.0.1-SNAPSHOT</version>

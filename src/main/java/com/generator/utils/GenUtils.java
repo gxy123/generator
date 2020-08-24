@@ -43,6 +43,20 @@ public class GenUtils {
         templates.put("templates/attach/master.pom.xml.vm", "pom.xml");
         templates.put("templates/attach/service.pom.xml.vm", "pom.xml");
         templates.put("templates/attach/logback.xml.vm", "logback.xml");
+
+
+        templates.put("templates/attach/BaseControllerImpl.java.vm", "BaseControllerImpl.java");
+        templates.put("templates/attach/BaseDAO.java.vm", "BaseDAO.java");
+        templates.put("templates/attach/BaseDO.java.vm",  "BaseDO.java");
+        templates.put("templates/attach/BaseQueryDO.java.vm", "BaseQueryDO.java");
+        templates.put("templates/attach/BaseServiceAO.java.vm", "BaseServiceAO.java");
+        templates.put("templates/attach/BaseServiceAOImpl.java.vm", "BaseServiceAOImpl.java");
+        templates.put("templates/attach/CommonCode.java.vm", "CommonCode.java");
+        templates.put("templates/attach/CommonResult.java.vm", "CommonResult.java");
+        templates.put("templates/attach/DateUtil.java.vm", "DateUtil.java");
+        templates.put("templates/attach/DistribID.java.vm", "DistribID.java");
+        templates.put("templates/attach/EnvironmentDefine.java.vm", "EnvironmentDefine.java");
+
         return templates;
     }
 
@@ -281,7 +295,12 @@ public class GenUtils {
                     .separator + "client" + File
                     .separator;
         }
-
+        if (template.contains("BaseQueryDO.java.vm")) {
+            return clientPackagePath + "base" + File.separator + className;
+        }
+        if (template.contains("BaseDO.java.vm")) {
+            return clientPackagePath + "base" + File.separator + className;
+        }
         if (template.contains("DO.java.vm")) {
             return clientPackagePath + "domain" + File.separator + className + "DO.java";
         }
@@ -291,13 +310,32 @@ public class GenUtils {
         }
 
 
+        if (template.contains("CommonCode.java.vm")) {
+            return clientPackagePath + "base" + File.separator + className;
+        }
+        if (template.contains("CommonResult.java.vm")) {
+            return clientPackagePath + "base" + File.separator + className;
+        }
+
+
         String corePackagePath = moduleName + "-service" + File
                 .separator + "src" + File.separator + "main" + File.separator + "java" + File.separator;
         if (StringUtils.isNotBlank(packageName)) {
             corePackagePath += packageName.replace(".", File.separator) + File.separator + moduleName + File
                     .separator;
         }
-
+        if (template.contains("BaseControllerImpl.java.vm")) {
+            return corePackagePath + "service" + File.separator + "base" + File.separator + className;
+        }
+        if (template.contains("BaseDAO.java.vm")) {
+            return corePackagePath + "service" + File.separator + "base" + File.separator + className;
+        }
+        if (template.contains("BaseServiceAO.java.vm")) {
+            return corePackagePath + "service" + File.separator + "base" + File.separator + className;
+        }
+        if (template.contains("BaseServiceAOImpl.java.vm")) {
+            return corePackagePath + "service" + File.separator + "base" + File.separator + className;
+        }
         if (template.contains("Dao.java.vm")) {
             return corePackagePath + "dao" + File.separator + className + "Dao.java";
         }
@@ -372,6 +410,17 @@ public class GenUtils {
         if (template.contains("SwaggerConfiguration.java.vm")) {
             return corePackagePath + "configer" + File.separator + className;
         }
+        if (template.contains("DateUtil.java.vm")) {
+            return corePackagePath + "service" + File.separator + "utils" + File.separator + className;
+        }
+        if (template.contains("DistribID.java.vm")) {
+            return corePackagePath + "service" + File.separator + "utils" + File.separator + className;
+        }
+        if (template.contains("EnvironmentDefine.java.vm")) {
+            return corePackagePath + "service" + File.separator + "utils" + File.separator + className;
+        }
+
+
         System.out.println("不存在的模板");
         return null;
     }

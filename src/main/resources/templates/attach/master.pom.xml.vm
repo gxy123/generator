@@ -26,11 +26,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.gxy</groupId>
-                <artifactId>base</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
             <!-- swagger -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>

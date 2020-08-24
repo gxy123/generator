@@ -5,9 +5,9 @@ import java.util.Date;
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import ${package}.client.base.BaseQueryDO;
+import ${package}.${moduleName}.client.base.BaseQueryDO;
 #if(${hasBigDecimal})
-        import java.math.BigDecimal;
+import java.math.BigDecimal;
 #end
 
 /**

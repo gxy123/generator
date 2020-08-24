@@ -2,7 +2,7 @@ package ${package}.${moduleName}.service;
 
 import ${package}.${moduleName}.client.domain.${className}DO;
 import ${package}.${moduleName}.client.query.${className}QueryDO;
-import ${package}.service.base.BaseServiceAO;
+import ${package}.${moduleName}.service.base.BaseServiceAO;
 
 /**
  * ${comments}
