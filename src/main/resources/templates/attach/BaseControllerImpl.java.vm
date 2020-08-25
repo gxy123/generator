@@ -1,5 +1,4 @@
 package ${package}.${moduleName}.service.base;
-
 import ${package}.${moduleName}.client.base.BaseDO;
 import ${package}.${moduleName}.client.base.BaseQueryDO;
 import org.slf4j.Logger;

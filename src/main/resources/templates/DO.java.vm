@@ -1,10 +1,8 @@
 package ${package}.${moduleName}.client.domain;
-
 import ${package}.${moduleName}.client.base.BaseDO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
 import java.util.Date;
 
 /**

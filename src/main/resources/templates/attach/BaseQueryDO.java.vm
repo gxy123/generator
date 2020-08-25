@@ -1,10 +1,8 @@
 package ${package}.${moduleName}.client.base;
-
 import io.swagger.annotations.ApiModelProperty;
 
 import java.beans.Transient;
 import java.io.Serializable;
-
 public class BaseQueryDO implements Serializable {
 
     @ApiModelProperty(

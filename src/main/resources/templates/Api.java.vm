@@ -1,17 +1,12 @@
 package ${package}.${moduleName}.web.api;
-
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-
-
 import   ${package}.${moduleName}.client.base.CommonResult;
 import   ${package}.${moduleName}.service.${className}Service;
 import   ${package}.${moduleName}.service.base.BaseControllerImpl;

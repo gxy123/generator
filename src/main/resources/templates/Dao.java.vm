@@ -1,5 +1,4 @@
 package ${package}.${moduleName}.dao;
-
 import ${package}.${moduleName}.client.domain.${className}DO;
 import ${package}.${moduleName}.client.query.${className}QueryDO;
 import ${package}.${moduleName}.service.base.BaseDAO;

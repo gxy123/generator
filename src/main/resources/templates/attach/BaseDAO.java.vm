@@ -1,7 +1,5 @@
 package ${package}.${moduleName}.service.base;
-
 import java.util.List;
-
 public interface BaseDAO<T,Q> {
     long save(T paramT);
 

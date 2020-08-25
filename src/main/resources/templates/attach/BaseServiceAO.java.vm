@@ -1,7 +1,5 @@
 package ${package}.${moduleName}.service.base;
-
 import ${package}.${moduleName}.client.base.CommonResult;
-
 import java.util.List;
 
 public interface BaseServiceAO<T,Q> {

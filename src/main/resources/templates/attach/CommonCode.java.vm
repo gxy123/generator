@@ -1,5 +1,4 @@
 package ${package}.${moduleName}.client.base;
-
 public enum CommonCode {
     CLIENT_ERROR(400000, "客户端错误"),
     PARAM_ERROR(400001, "参数错误"),

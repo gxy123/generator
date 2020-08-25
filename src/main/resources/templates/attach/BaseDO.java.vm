@@ -1,7 +1,5 @@
 package ${package}.${moduleName}.client.base;
-
 import java.io.Serializable;
-
 public class BaseDO implements Serializable {
     public BaseDO() {
     }

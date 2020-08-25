@@ -1,5 +1,5 @@
 package ${package}.${moduleName}.client.base;
-
+import ${package}.${moduleName}.client.base.CommonCode;
 import lombok.Data;
 import org.slf4j.MDC;
 
