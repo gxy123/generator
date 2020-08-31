@@ -65,7 +65,7 @@ public class BaseQueryDO implements Serializable {
 
     @Transient
     public Integer getFirstRow() {
-        return this.getPageNum() * this.getPageSize();
+        return (this.getPageNum()-1) * this.getPageSize();
     }
 
     public String getVerify() {
